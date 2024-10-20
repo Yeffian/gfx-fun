@@ -45,24 +45,25 @@ int main(void)
             ySpeed1 *= -1.0f;
         }
 
-        if (x2 < 1 || x2 > S_WIDTH) {
+        if (x2 < 0 || x2 > S_WIDTH) {
             xSpeed2 *= -1.0f;
         }
 
-        if (y2 < 1 || y2 > S_HEIGHT) {
+        if (y2 < 0 || y2 > S_HEIGHT) {
             ySpeed2 *= -1.0f;
         }
 
         if (dist(x1, y1, x2, y2) < 75) {
-            bigCircleColor = RED;
-        } else {
-            bigCircleColor = GREEN;
-        }
+            xSpeed1 *= -1.0f;
+            ySpeed1 *= -1.0f;
+
+            xSpeed2 *= -1.0f;
+        } 
 
         BeginDrawing();
             ClearBackground(BLACK);
-            DrawCircle(x1, x2, 25, RED);
-            DrawCircle(x2, y2, 50, bigCircleColor);
+            DrawCircle(x1, y1, 25, RED);
+            DrawCircle(x2, y2, 50, GREEN);
         EndDrawing();
     }
 
