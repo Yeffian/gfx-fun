@@ -7,10 +7,7 @@
 #define S_WIDTH 800
 #define S_HEIGHT 450
 
-int main(void)
-{ 
-    auto bigCircleColor = GREEN;
-
+int CircleVCircle() {
     float x1 = 100.0f;
     float y1 = 100.0f;
 
@@ -66,4 +63,44 @@ int main(void)
 
     CloseWindow();
     return 0;
+}
+
+int RectangleVRectangle() {
+    Vector2 mousePos = GetMousePosition();
+
+    float rectX = 300.0f;
+    float rectY = 100.0f; 
+
+    float rectWidth = 300.0f;
+    float rectHeight = 200.0f;
+
+    auto rectColor = GREEN;
+
+    InitWindow(S_WIDTH, S_HEIGHT, "Rectangle V Rectangle");
+    SetTargetFPS(60);
+
+    while (!WindowShouldClose()) 
+    {
+        mousePos = GetMousePosition();
+
+        if (mousePos.x > rectX && mousePos.x < rectX + rectWidth) {
+            if (mousePos.y > rectY && mousePos.y < rectY + rectHeight) {
+                rectColor = RED;
+            }
+        } else {
+            rectColor = GREEN;
+        }
+
+        BeginDrawing();
+            DrawRectangle(rectX, rectY, rectWidth, rectHeight, rectColor);
+        EndDrawing();
+    }
+
+    CloseWindow();
+    return 0;
+}
+
+int main(void)
+{ 
+    return RectangleVRectangle();
 }
